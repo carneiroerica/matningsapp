@@ -21,8 +21,6 @@ excel_df = excel_df[:-1]
 # Säkerställ att inga mellanslag är kvar genom att använda strip()
 excel_df = excel_df[excel_df["DP (TPAB)"].str.strip() != "Fakturtotal (kr)"]
 
-# Debug: Skriv ut DataFrame efter borttagning
-st.write("Data efter borttagning:", excel_df)
 
 st.title("Kostnadsfördelning för mätning per DP")
 
