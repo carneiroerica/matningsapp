@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 # Läs in CSV-filen med semikolon som separator
-df = pd.read_excel("koordinater.xlsx")
+df = pd.read_excel("koordinater.csv")
 
 # Kontrollera kolumnnamnen och datan
 st.write(df.columns)  # Skriv ut kolumnnamnen
