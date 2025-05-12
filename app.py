@@ -1,7 +1,12 @@
 import streamlit as st
 import pandas as pd
 
-df = pd.read_csv("koordinater.csv")
+# Läs in CSV-filen med semikolon som separator
+df = pd.read_csv("koordinater.csv", sep=";")
+
+# Kontrollera de första raderna i data
+st.write(df.head())
+
 
 # Ladda Excel-filen
 @st.cache_data
