@@ -29,6 +29,9 @@ if total_kostnad > 0:
     if "Andel" in excel_df.columns:
         # Räkna om kostnadsandel
         excel_df["Beräknad kostnad"] = excel_df["Andel"] * total_kostnad
+        # Formatera kostnadskolumnen till två decimaler för visning
+        excel_df["Beräknad kostnad"] = excel_df["Beräknad kostnad"].round(2)
+
 
         # Visa tabellen
         st.subheader("Fördelning per DP")
