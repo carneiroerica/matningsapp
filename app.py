@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-df = pd.read_excell("koordinater.csv")
+df = pd.read_excel("koordinater.csv")
 
 # Ladda Excel-filen
 @st.cache_data
