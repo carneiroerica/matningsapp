@@ -10,7 +10,7 @@ def load_data():
     return pd.read_excel("Matningsdata.xlsx")
 
 df = load_data()
-st.write(df.head())
+#st.write(df.head())
 
 
 st.title("Kostnadsfördelning för mätning per DP")
