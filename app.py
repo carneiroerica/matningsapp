@@ -8,8 +8,6 @@ def load_data():
 
 excel_df = load_data()  # Excel file loaded separately, not overwriting df
 
-# Debug: Skriv ut unika värden i kolumnen "DP (TPAB)" för att se vad som finns
-st.write("Unika värden i kolumnen 'DP (TPAB)':", excel_df["DP (TPAB)"].unique())
 
 # Ta bort den sista raden om den innehåller "Fakturtotal (kr)"
 excel_df = excel_df[excel_df["DP (TPAB)"].str.strip() != "Fakturtotal (kr)"]
