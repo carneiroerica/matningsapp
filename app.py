@@ -60,4 +60,8 @@ if total_kostnad > 0:
         st.download_button(label="Ladda ner resultat som Excel",
                            data=excel_data,
                            file_name="kostnadsfordelning.xlsx",
-                           mime="application
+                           mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+    else:
+        st.error("Kolumnen 'Andel' finns inte i Excel-filen.")
+else:
+    st.info("Ange totalbeloppet från fakturan för att beräkna fördelningen.")
