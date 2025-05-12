@@ -49,4 +49,4 @@ if total_kostnad > 0:
                        file_name="kostnadsfordelning.xlsx",
                        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
 else:
-    st.info("Ange en totalkostnad för att se fördelningen.")
+    st.info("Ange totalbeloppet från fakturan för att beräkna fördelningen.")
