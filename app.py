@@ -1,9 +1,6 @@
 import streamlit as st
 import pandas as pd
 
-# Läs in CSV-filen med semikolon som separator
-df = pd.read_csv("koordinater.csv", sep=';')  # Assuming CSV uses semicolon
-
 # Ladda Excel-filen
 @st.cache_data
 def load_data():
