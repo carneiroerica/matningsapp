@@ -1,6 +1,9 @@
 import streamlit as st
 import pandas as pd
 
+# Läs in CSV-filen med semikolon som separator
+df = pd.read_csv("koordinater.csv", sep=';')  # Assuming CSV uses semicolon
+
 # Ladda Excel-filen
 @st.cache_data
 def load_data():
@@ -8,9 +11,18 @@ def load_data():
 
 excel_df = load_data()  # Excel file loaded separately, not overwriting df
 
+# Debug: Skriv ut hela DataFrame innan borttagning
+st.write("Data före borttagning:", excel_df)
+
+# Ta bort sista raden baserat på radindex (om den är sista raden)
+excel_df = excel_df[:-1]
 
 # Ta bort den sista raden om den innehåller "Fakturtotal (kr)"
+# Säkerställ att inga mellanslag är kvar genom att använda strip()
 excel_df = excel_df[excel_df["DP (TPAB)"].str.strip() != "Fakturtotal (kr)"]
+
+# Debug: Skriv ut DataFrame efter borttagning
+st.write("Data efter borttagning:", excel_df)
 
 st.title("Kostnadsfördelning för mätning per DP")
 
@@ -48,8 +60,4 @@ if total_kostnad > 0:
         st.download_button(label="Ladda ner resultat som Excel",
                            data=excel_data,
                            file_name="kostnadsfordelning.xlsx",
-                           mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
-    else:
-        st.error("Kolumnen 'Andel' finns inte i Excel-filen.")
-else:
-    st.info("Ange totalbeloppet från fakturan för att beräkna fördelningen.")
+                           mime="application
