@@ -2,11 +2,11 @@ import streamlit as st
 import pandas as pd
 
 # Läs in CSV-filen med semikolon som separator
-df = pd.read_csv("koordinater.csv", sep=";")
+df = pd.read_excel("koordinater.xlsx")
 
-# Kontrollera de första raderna i data
-st.write(df.head())
-
+# Kontrollera kolumnnamnen och datan
+st.write(df.columns)  # Skriv ut kolumnnamnen
+st.write(df.head())  # Skriv ut de första raderna av datan
 
 # Ladda Excel-filen
 @st.cache_data
