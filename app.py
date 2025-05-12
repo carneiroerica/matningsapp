@@ -7,7 +7,7 @@ df = pd.read_csv("koordinater.csv")
 # Ladda Excel-filen
 @st.cache_data
 def load_data():
-    return pd.read_csv("Matningsdata.csv")
+    return pd.read_excel("Matningsdata.xlsx")
 
 df = load_data()
 st.write(df.head())
