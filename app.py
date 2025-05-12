@@ -11,9 +11,6 @@ def load_data():
 
 excel_df = load_data()  # Excel file loaded separately, not overwriting df
 
-# Debug: Skriv ut hela DataFrame innan borttagning
-#st.write("Data före borttagning:", excel_df)
-
 # Ta bort sista raden baserat på radindex (om den är sista raden)
 excel_df = excel_df[:-1]
 
