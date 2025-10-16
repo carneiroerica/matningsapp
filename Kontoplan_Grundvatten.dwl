@@ -1,3 +1,0 @@
-CarneiroE
-SEHP5CG32653SL 
-den 10 mars 2025  19:37:00
