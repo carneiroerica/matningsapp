@@ -52,4 +52,10 @@ if total_kostnad > 0:
 
         excel_data = to_excel(df[["DP (TPAB)", "Andel", "Beräknad kostnad"]])
         st.download_button(
-           
+            label="Ladda ner resultat som Excel",
+            data=excel_data,
+            file_name="kostnadsfordelning.xlsx",
+            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        )
+else:
+    st.info("Ange en totalkostnad för att se fördelningen.")
