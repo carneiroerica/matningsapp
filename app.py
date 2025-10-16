@@ -26,11 +26,15 @@ if total_kostnad > 0:
     if "Andel" not in df.columns:
         st.error("Kolumnen 'Andel' saknas i Excel-filen!")
     else:
-        df["Beräknad kostnad"] = df["Andel"] * total_kostnad
+        # Calculate and format cost
+        df["Beräknad kostnad"] = (df["Andel"] * total_kostnad).round(2)
 
-        # Show only the table after cost is entered
+        # Remove last row
+        df_display = df.iloc[:-1].copy()
+
+        # Display table
         st.subheader("Fördelning per DP")
-        st.dataframe(df[[
+        st.dataframe(df_display[[
             "DP (TPAB)", "Månadsvisa rör", "Kvartalsvisa rör", "Årsmätningar", "Andel", "Beräknad kostnad"
         ]].rename(columns={
             "DP (TPAB)": "DP",
@@ -41,6 +45,7 @@ if total_kostnad > 0:
             "Beräknad kostnad": "Kostnad (kr)"
         }))
 
+        # Excel export
         @st.cache_data
         def to_excel(dataframe):
             from io import BytesIO
@@ -50,12 +55,10 @@ if total_kostnad > 0:
             output.seek(0)
             return output
 
-        excel_data = to_excel(df[["DP (TPAB)", "Andel", "Beräknad kostnad"]])
+        excel_data = to_excel(df_display[["DP (TPAB)", "Andel", "Beräknad kostnad"]])
         st.download_button(
             label="Ladda ner resultat som Excel",
             data=excel_data,
             file_name="kostnadsfordelning.xlsx",
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         )
-else:
-    st.info("Ange en totalkostnad för att se fördelningen.")
